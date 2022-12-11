@@ -1,19 +1,16 @@
-import binascii
-import os
-
 from dyn.tm.session import DynectSession
 from dyn.tm.zones import Zone, Node
 from dyn.tm.errors import DynectCreateError
-from pulumi import Input, Output
-from pulumi.dynamic import ResourceProvider, CreateResult, DiffResult, UpdateResult, Resource
 
 import dns.update
 import dns.query
+from .dns.dc_dns import DcDNS
+from .dns.dyn_dns import DynDNS
 
 # A class representing the arguments that the dynamic provider needs. Each argument
 # will automatically be converted from Input[T] to T before being passed to the
 # functions in the provider
-class SchemaInputs(object):
+class Inputs(object):
     zone_name: Input[str]
     record_name: Input[str]
     record_type: Input[str]
@@ -36,16 +33,14 @@ class SchemaInputs(object):
 
 # The code for the dynamic provider that gives us our custom resource. It handles
 # all the create, read, update, and delete operations the resource needs.
-class SchemaProvider(ResourceProvider):
+class DNSProvider(Inputs):
 
     # The function that is called when a new resource needs to be created
     def create(self, args):
         if args['is_dyn_external_dns']:
             self.create_dyn_record(args)
-            return CreateResult("schema-" + binascii.b2a_hex(os.urandom(16)).decode("utf-8"), outs=args)
         else:
             self.create_dc_record(args)
-            return CreateResult("schema-" + binascii.b2a_hex(os.urandom(16)).decode("utf-8"), outs=args)
 
         # The creation process is finished. We assign a unique ID to this resource,
         # and return all the outputs required by the resource (in this case
