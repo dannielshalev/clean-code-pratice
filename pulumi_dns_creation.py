@@ -9,8 +9,6 @@ from pulumi.dynamic import ResourceProvider, CreateResult, DiffResult, UpdateRes
 
 import dns.update
 import dns.query
-from .config_helper import get_pulumi_creds_from_vault as vault
-
 
 # A class representing the arguments that the dynamic provider needs. Each argument
 # will automatically be converted from Input[T] to T before being passed to the
