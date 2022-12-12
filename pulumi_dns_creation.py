@@ -4,8 +4,6 @@ from dyn.tm.errors import DynectCreateError
 
 import dns.update
 import dns.query
-from .dns.dc_dns import DcDNS
-from .dns.dyn_dns import DynDNS
 
 # A class representing the arguments that the dynamic provider needs. Each argument
 # will automatically be converted from Input[T] to T before being passed to the
