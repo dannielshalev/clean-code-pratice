@@ -59,7 +59,7 @@ class DNSProvider(Inputs):
     def create_dc_record(args):
         update = dns.update.Update(args["zone_name"])
         update.replace(args["record_name"], int(args["record_ttl"]), args["record_type"], args["record_value"])
-        response = dns.query.tcp(update, args['ec_dns_server'], timeout=10)
+        response = dns.query.tcp(update, args['dc_dns_server'], timeout=10)
         print(response.to_text())
 
     # The function that is called when an existing resource needs to be deleted
@@ -81,5 +81,5 @@ class DNSProvider(Inputs):
     def delete_dc_record(args):
         update = dns.update.Update(args["zone_name"])
         update.delete(args["record_name"], args["record_type"], args["record_value"])
-        response = dns.query.tcp(update, args['ec_dns_server'], timeout=10)
+        response = dns.query.tcp(update, args['dc_dns_server'], timeout=10)
         print(response.to_text())
