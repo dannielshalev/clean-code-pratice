@@ -26,7 +26,7 @@ class Inputs(object):
         self.dyn_username = public_secret_username
         self.dyn_password = public_secret_password
         self.customer = "danniel"
-        self.ec_dns_server = '8.8.8.8'
+        self.dc_dns_server = '8.8.8.8'
 
 
 # The code for the dynamic provider that gives us our custom resource. It handles
