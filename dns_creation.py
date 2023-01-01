@@ -1,4 +1,4 @@
-from .dns.private_dns import PrivateDNS
+from dns.private_dns import PrivateDNS
 from dns.public_dns import PublicDNS
 
 
