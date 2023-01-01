@@ -8,25 +8,24 @@ import dns.query
 # A class representing the arguments that the dynamic provider needs. Each argument
 # will automatically be converted from Input[T] to T before being passed to the
 # functions in the provider
-class Inputs(object):
-    zone_name: Input[str]
-    record_name: Input[str]
-    record_type: Input[str]
-    record_value: Input[str]
-    record_ttl: Input[str]
+class DNSInputs(object):
+    zone_name: str
+    record_name: str
+    record_type: str
+    record_value: str
+    record_ttl: str
 
-    def __init__(self, zone_name, record_name, record_type, record_value, record_ttl, is_dyn_external_dns=False):
+    def __init__(self, zone_name, record_name, record_type, record_value, record_ttl, is_public_external_dns=False):
         self.zone_name = zone_name
         self.record_name = record_name
         self.record_type = record_type
         self.record_value = record_value
         self.record_ttl = record_ttl
         self.is_dyn_external_dns = is_public_external_dns
-        dyn_secret = 'secret'
-        self.dyn_username = public_secret_username
-        self.dyn_password = public_secret_password
+        self.dyn_username = 'public_secret_username'
+        self.dyn_password = 'public_secret_password'
         self.customer = "danniel"
-        self.dc_dns_server = '8.8.8.8'
+        self.ec_dns_server = '10.1.1.1'
 
 
 # The code for the dynamic provider that gives us our custom resource. It handles
