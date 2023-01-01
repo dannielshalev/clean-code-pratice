@@ -14,6 +14,7 @@ class DNSInputs(object):
     record_type: str
     record_value: str
     record_ttl: str
+    is_public_external_dns: bool
 
     def __init__(self, zone_name, record_name, record_type, record_value, record_ttl, is_public_external_dns=False):
         self.zone_name = zone_name
