@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
     private_args = DNSInputs(zone_name='lotr.local',
                              record_name='gollum',
-                             record_type='public',
+                             record_type='private',
                              record_value='172.16.1.5',
                              record_ttl='3600')
     private_dns = DNSProvider(private_args)
