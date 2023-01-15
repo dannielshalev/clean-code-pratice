@@ -8,8 +8,7 @@ class DNSInputs(object):
     record_type: str
     record_value: str
     record_ttl: str
-
-
+    
 class DNSInputs(object):
     zone_name: str
     record_name: str
@@ -28,7 +27,6 @@ class DNSInputs(object):
         self.dyn_password = 'public_secret_password'
         self.customer = "danniel"
         self.ec_dns_server = '10.1.1.1'
-
 
 class DNSProvider(DNSInputs):
     def __init__(self):

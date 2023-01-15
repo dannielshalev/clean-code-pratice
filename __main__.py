@@ -6,6 +6,7 @@ if __name__ == '__main__':
                             record_type='public',
                             record_value='212.143.212.143',
                             record_ttl='3600')`
+
     public_dns = DNSProvider(public_args)
 
     private_args = DNSInputs(zone_name='lotr.local',
